@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: llm-shard-a
+spec:
+  selector:
+    app: llm-shard-a
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-shard-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-shard-b
+  template:
+    metadata:
+      labels:
+        app: llm-shard-b
+    spec:
+      containers:
+      - name: shard-b
+        image: llm-sharding:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SHARD_ROLE
+          value: "b"
+        - name: SPLIT_AT
+          value: "1"
+        ports:
+        - containerPort: 5000

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-shard-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-shard-a
+  template:
+    metadata:
+      labels:
+        app: llm-shard-a
+    spec:
+      containers:
+      - name: shard-a
+        image: llm-sharding:latest            # change if using registry
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SHARD_ROLE
+          value: "a"
+        - name: SPLIT_AT
+          value: "2"
+        ports:
+        - containerPort: 5000

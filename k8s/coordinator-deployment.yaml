@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-coordinator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-coordinator
+  template:
+    metadata:
+      labels:
+        app: llm-coordinator
+    spec:
+      containers:
+      - name: coordinator
+        image: llm-sharding:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SHARD_ROLE
+          value: "coordinator"
+        - name: SHARD_A_SERVICE
+          value: "llm-shard-a"
+        - name: SHARD_B_SERVICE
+          value: "llm-shard-b"
+        - name: SHARD_PORT
+          value: "5000"
+        ports:
+        - containerPort: 5000
