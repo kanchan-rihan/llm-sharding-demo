@@ -1,20 +1,20 @@
-# LLM Sharding Concept
+# LLM Sharding Concept during Inference time
 
-**A hands-on demo to learn the concept of sharding large language models (LLMs)**
+**A hands-on demo to learn the concept of sharding large language models (LLMs) for inference **
 
-This repository demonstrates how to split a Tiny GPT-2 model into multiple “shards” and orchestrate token generation using a **coordinator**. The goal is educational: to help you understand model sharding and distributed inference in a simple setup.
+This repository demonstrates how to split a Tiny GPT-2 model into multiple “shards” to orchestrate token generation during inference, using a coordinator. The focus of this demo is on distributed sharding and multi-process orchestration for LLM inference workloads—not training. The architecture helps you understand model sharding and distributed inference, making it accessible for education and experimentation.
 
 ---
 
 ## 🏗️ Overview
 
-We split the Tiny GPT-2 model into two shards:
+We split the Tiny GPT-2 model into two shards for inference:
 
 - **Shard A** – the “prep chef”: handles embeddings and early transformer blocks.
 - **Shard B** – the “finishing chef”: handles the remaining transformer blocks and produces final logits.
 - **Coordinator** – the “head chef”: orchestrates generation by sending prompts to Shard A and hidden states to Shard B.
 
-The architecture mimics a kitchen workflow:
+The architecture mimics a kitchen workflow for model inference:
 
 ```
 User prompt
@@ -123,7 +123,7 @@ print("Generated output:", output)
 
 ## 📚 Learning Goals
 
-- Understand **model sharding** for LLMs.
+- Understand **model sharding as applied during inference time ** for LLMs.
 - Learn how to orchestrate multiple shards via a **coordinator**.
 - Explore **distributed inference workflows** locally with Kubernetes.
 
