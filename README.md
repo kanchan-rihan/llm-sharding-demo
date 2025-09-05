@@ -1,14 +1,14 @@
 # LLM Sharding Concept
 
-**A hands-on demo to learn the concept of sharding large language models (LLMs) using GPT-2 and FastAPI.**
+**A hands-on demo to learn the concept of sharding large language models (LLMs)**
 
-This repository demonstrates how to split a GPT-2 model into multiple “shards” and orchestrate token generation using a **coordinator**. The goal is educational: to help you understand model sharding and distributed inference in a simple setup.
+This repository demonstrates how to split a Tiny GPT-2 model into multiple “shards” and orchestrate token generation using a **coordinator**. The goal is educational: to help you understand model sharding and distributed inference in a simple setup.
 
 ---
 
 ## 🏗️ Overview
 
-We split the GPT-2 model into two shards:
+We split the Tiny GPT-2 model into two shards:
 
 - **Shard A** – the “prep chef”: handles embeddings and early transformer blocks.
 - **Shard B** – the “finishing chef”: handles the remaining transformer blocks and produces final logits.
