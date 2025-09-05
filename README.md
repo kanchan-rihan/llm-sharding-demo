@@ -53,8 +53,8 @@ Generated text
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/llm-sharding-concept.git
-cd llm-sharding-concept
+git clone https://github.com/<your-username>/llm-sharding-demo.git
+cd llm-sharding-demo
 ```
 
 ### 2. Build and run Docker images
